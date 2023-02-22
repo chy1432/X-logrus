@@ -1,4 +1,4 @@
-module github.com/chy1432/X-logrus
+module github.com/zhumeme/X-logrus
 
 go 1.19
 

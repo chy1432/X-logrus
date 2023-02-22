@@ -1,17 +1,17 @@
-package main
+package main_test
 
 import (
 	"context"
 	"fmt"
-	"github.com/chy1432/X-logrus/ctxLogger"
 	"github.com/sirupsen/logrus"
+	"github.com/zhumeme/X-logrus/ctxLogger"
 	"path"
 	"runtime"
+	"testing"
 	"time"
 )
 
-func main() {
-	// logrus
+func Test_CtxHook(t *testing.T) {
 	log := logrus.StandardLogger()
 	log.AddHook(&ctxLogger.CtxHook{})
 	log.SetFormatter(&logrus.TextFormatter{
@@ -37,14 +37,4 @@ func main() {
 	log.WithContext(ctx).WithFields(logrus.Fields{
 		"error": fmt.Errorf("err"),
 	}).Info("test")
-
-	// zap
-	//logger, err := zap.NewProduction(zap.Hooks(func(e zapcore.Entry) error {
-	//
-	//}))
-	//if err != nil {
-	//	return
-	//}
-	//sugar := logger.Sugar()
-	//sugar.WithOptions()
 }
